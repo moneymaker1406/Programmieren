@@ -1,0 +1,56 @@
+import java.util.Scanner;
+
+public class Taschenrechner {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner scanner = new Scanner(System.in);
+		String rechnung = scanner.nextLine();
+
+		char zeichen = 0;
+
+		if (rechnung.contains("+")) {
+			zeichen = '+';
+		} else if (rechnung.contains("-")) {
+			zeichen = '-';
+		} else if (rechnung.contains("*")) {
+			zeichen = '*';
+		} else if (rechnung.contains("/")) {
+			zeichen = '/';
+		} 
+		if (zeichen == 0) {
+			System.out.println("Du hast ein Zeichen verwendet das ich noch nicht kenne!");
+		}
+		else {
+
+		String[] rechnungSplit = rechnung.split("\\" + zeichen);
+		double zahl1 = Double.parseDouble(rechnungSplit[0]);
+		double zahl2 = Double.parseDouble(rechnungSplit[1]);
+
+		double ergebnis = 0;
+		switch (zeichen) {
+		case '+':
+			ergebnis = zahl1 + zahl2;
+			break;
+		case '-':
+			ergebnis = zahl1 - zahl2;
+			break;
+		case '*':
+			ergebnis = zahl1 * zahl2;
+			break;
+		case '/':
+			if (zahl2 == 0) {
+				System.out.println("Syntax Error!");
+				break;
+			}
+			ergebnis = zahl1 / zahl2;
+			break;
+		default:
+			break;
+		}
+
+		System.out.println(ergebnis);
+		}
+	}
+
+}
